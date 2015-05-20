@@ -1,0 +1,6 @@
+[2015-05-19 21:19:16] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Pingpong\Generators\GeneratosServiceProvider' not found' in /var/www/todo/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:150
+Stack trace:
+#0 {main}  
+[2015-05-19 21:27:58] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Form' not found' in /var/www/todo/storage/framework/views/83b3f0953ca2a158b981c0f041cf8f2b:17
+Stack trace:
+#0 {main}  

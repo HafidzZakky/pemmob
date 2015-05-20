@@ -1,0 +1,51 @@
+<?php $__env->startSection('content'); ?>
+  <div class="panel panel-default">
+	<div class="panel-heading">
+		All Tasks
+		<div class="panel-nav pull-right" style="margin-top: -7px;">
+			<a href="<?php echo route('tasks.create'); ?>" class="btn btn-default">Add New</a>
+		</div>
+	</div>
+	<table class="table table-stripped table-bordered">
+		<thead>
+			<th class="text-center">#</th>
+			<th>Aktifitas</th>
+			<th>Deskripsi</th>
+			<th>Tgl_deadline</th>
+			<th>Status</th>
+
+			<th>Created At</th>
+			<th class="text-center">Action</th>
+		</thead>
+		<tbody>
+			<?php foreach($tasks as $task): ?>
+				<tr>
+					<td class="text-center"><?php echo $no; ?></td>
+					<td><?php echo $task->aktifitas; ?></td>
+					<td><?php echo $task->deskripsi; ?></td>
+					<td><?php echo $task->tgl_deadline; ?></td>
+					<td><?php echo $task->status; ?></td>
+		
+					<td><?php echo $task->created_at; ?></td>
+					<td class="text-center">
+						<div class="btn-group">
+							<?php echo Form::open(['method' => 'DELETE', 'route' => ['tasks.destroy', $task->id]]); ?>
+
+							<a href="<?php echo route('tasks.show', $task->id); ?>" class="btn btn-sm btn-default" title="View" data-toggle="tooltip"><i class="glyphicon glyphicon-eye-open"></i></a>
+							<a href="<?php echo route('tasks.edit', $task->id); ?>" class="btn btn-sm btn-default" title="Edit" data-toggle="tooltip"><i class="glyphicon glyphicon-edit"></i></a>
+							<button type="submit" class="btn btn-sm btn-default" title="Delete" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"></i></button>
+							<?php echo Form::close(); ?>
+
+						</div>
+					</td>
+				</tr>
+				<?php $no++; ?>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	<div class="panel-footer">
+		<div class="text-center"><?php echo $tasks; ?></div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

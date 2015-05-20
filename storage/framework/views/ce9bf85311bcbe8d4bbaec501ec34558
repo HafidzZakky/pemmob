@@ -1,0 +1,62 @@
+<?php if(count($errors) > 0): ?>
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            <?php foreach($errors->all() as $error): ?>
+                <li><?php echo e($error); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
+<div class="form-horizontal">
+    <?php if(isset($model)): ?>
+        <?php echo Form::model($model, ['files' => true, 'method' => 'PUT', 'route' => ['tasks.update', $model->id]]); ?>
+
+    <?php else: ?>
+        <?php echo Form::open(['files' => true, 'route' => 'tasks.store']); ?>
+
+    <?php endif; ?>
+    	<div class="form-group">
+	    <?php echo Form::label('aktifitas', 'Aktifitas:', ['class' => 'col-md-2 control-label']); ?>
+
+	    <div class="col-sm-9">
+	        <?php echo Form::textarea('aktifitas', null, ['class' => 'form-control']); ?>
+
+	    </div>
+	</div>
+	<div class="form-group">
+	    <?php echo Form::label('deskripsi', 'Deskripsi:', ['class' => 'col-md-2 control-label']); ?>
+
+	    <div class="col-sm-9">
+	        <?php echo Form::textarea('deskripsi', null, ['class' => 'form-control']); ?>
+
+	    </div>
+	</div>
+	<div class="form-group">
+	    <?php echo Form::label('tgl_deadline', 'Tgl_deadline:', ['class' => 'col-md-2 control-label']); ?>
+
+	    <div class="col-sm-9">
+	        <?php echo Form::text('tgl_deadline', null, ['class' => 'form-control']); ?>
+
+	    </div>
+	</div>
+	<div class="form-group">
+	    <?php echo Form::label('status', 'Status:', ['class' => 'col-md-2 control-label']); ?>
+
+	    <div class="col-sm-9">
+	        <?php echo Form::textarea('status', null, ['class' => 'form-control']); ?>
+
+	    </div>
+	</div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label"></label>
+        <div class="col-sm-9">
+            <?php echo Form::submit('Save', ['class' => 'btn btn-primary']); ?>
+
+        </div>
+    </div>
+    <?php echo Form::close(); ?>
+
+</div>
